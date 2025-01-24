@@ -1,10 +1,21 @@
 import React from "react";
-import { signOut } from "@/auth";
+import { auth, signOut } from "@/auth";
 import { Button } from "@/components/ui/button";
 import BookList from "@/components/BookList";
 import { sampleBooks } from "@/constants";
+import { db } from "@/database/drizzle";
+import { borrowRecords } from "@/database/schema";
+import { eq } from "drizzle-orm";
 
-const Page = () => {
+const Page = async () => {
+  const session = await auth();
+
+  const borrowedBooks = await db
+    .select()
+    .from(borrowRecords)
+    .where(eq(borrowRecords.userId, session?.user?.id))
+    .limit(1);
+
   return (
     <>
       <form
@@ -16,7 +27,7 @@ const Page = () => {
       >
         <Button>Logout</Button>
       </form>
-      <BookList books={sampleBooks} title="Borrowed Books" />
+      <BookList books={borrowedBooks} title="Borrowed Books" />
     </>
   );
 };
