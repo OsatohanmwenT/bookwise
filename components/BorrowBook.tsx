@@ -26,7 +26,7 @@ const BorrowBook = ({
 
   const handleBorrowBook = async () => {
     if (!isEligible) {
-      toast({
+      return toast({
         title: "Error",
         description: message,
         variant: "destructive",
