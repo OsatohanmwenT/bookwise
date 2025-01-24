@@ -2,10 +2,9 @@ import React from "react";
 import { auth, signOut } from "@/auth";
 import { Button } from "@/components/ui/button";
 import BookList from "@/components/BookList";
-import { sampleBooks } from "@/constants";
 import { db } from "@/database/drizzle";
 import { borrowRecords } from "@/database/schema";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 
 const Page = async () => {
   const session = await auth();
@@ -13,7 +12,12 @@ const Page = async () => {
   const borrowedBooks = await db
     .select()
     .from(borrowRecords)
-    .where(eq(borrowRecords.userId, session?.user?.id))
+    .where(
+      and(
+        eq(borrowRecords.userId, session?.user?.id),
+        eq(borrowRecords.status, "BORROWED"),
+      ),
+    )
     .limit(1);
 
   return (
