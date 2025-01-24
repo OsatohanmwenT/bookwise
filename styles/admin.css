@@ -40,7 +40,7 @@
         @apply w-full min-h-14 rounded-xl font-bold text-base text-light-800 !important;
     }
 
-    /* Book Form */
+    /* Book BookForm */
     .book-form_input {
         @apply min-h-14 border border-gray-100 bg-light-600 p-4 text-base font-semibold placeholder:font-normal placeholder:text-slate-500 !important;
     }
