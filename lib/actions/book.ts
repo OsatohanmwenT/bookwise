@@ -36,8 +36,6 @@ export const borrowBook = async (params: {
       status: "BORROWED",
     });
 
-    console.log(record);
-
     await db
       .update(books)
       .set({ availableCopies: book[0].availableCopies - 1 })
