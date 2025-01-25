@@ -4,7 +4,6 @@ import { db } from "@/database/drizzle";
 import { books } from "@/database/schema";
 import BookList from "@/components/BookList";
 import BookOverview from "@/components/BookOverview";
-import { sampleBooks } from "@/constants";
 
 export default async function Home() {
   const session = await auth();
@@ -17,7 +16,7 @@ export default async function Home() {
 
   return (
     <>
-      <BookOverview {...latestBooks[0]} userId={session?.user?.id} />
+      <BookOverview {...latestBooks[0]} userId={session?.user?.id as string} />
 
       <BookList
         title="Latest Books"

@@ -65,7 +65,7 @@ const BookOverview = async ({
           </p>
         </div>
         <p className="book-description">{description}</p>
-        {user && (
+        {borrowingEligibility.isEligible && (
           <BorrowBook
             bookId={id}
             userId={userId}

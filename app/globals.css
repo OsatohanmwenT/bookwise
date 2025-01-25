@@ -85,7 +85,7 @@
 
   /* Book List */
   .book-list {
-    @apply mt-10 flex flex-wrap gap-5 max-xs:justify-between xs:gap-10;
+    @apply mt-10 flex flex-wrap gap-12 max-xs:justify-center xs:gap-10;
   }
 
   /* Book Overview */
@@ -135,12 +135,25 @@
   }
 
   /* Search */
+  .search-page_title {
+    @apply flex flex-col items-center justify-center gap-12 sm:gap-6 xl:gap-4 mb-10;
+  }
+
   .search {
-    @apply relative mt-10 flex min-h-14 w-full items-center rounded-xl bg-dark-300 px-4;
+    @apply relative mt-10 flex min-h-14 w-full max-w-2xl items-center rounded-xl !bg-dark-300 px-4;
   }
 
   .search-input {
     @apply w-full border-none font-bold placeholder:font-normal text-white placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none !important;
+  }
+
+  .search-page_title h1 {
+    @apply text-5xl font-semibold max-w-4xl mx-auto text-center text-white md:text-7xl;
+  }
+
+  /* Filter */
+  .filter-item {
+    @apply hover:!bg-dark-600 hover:!text-light-200;
   }
 
   /* Book Receipt */
