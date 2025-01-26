@@ -40,3 +40,15 @@ interface BorrowBookParams {
   bookId: string;
   userId: string;
 }
+
+interface User {
+  id: string;
+  fullName: string;
+  email: string;
+  password: string;
+  universityId: number;
+  universityCard: string;
+  status: string | null;
+  role: string | null;
+  createdAt: Date | null;
+}

@@ -64,11 +64,11 @@
 
   /* Book Cover */
   .book-cover_extra_small {
-    @apply w-[28.95px] h-10;
+    @apply w-[30px] h-10;
   }
 
   .book-cover_small {
-    @apply w-[55px] h-[76px];
+    @apply w-[35px] h-12;
   }
 
   .book-cover_medium {
@@ -235,6 +235,19 @@
 
   .select-item {
     @apply focus:bg-dark-600 focus:text-light-100 !important;
+  }
+
+  /* Table */
+  .table {
+    @apply container mx-auto rounded-md overflow-hidden;
+  }
+
+  .table-head th {
+    @apply text-dark-100 text-sm lg:text-base bg-light-300 font-light p-4;
+  }
+
+  .table-body td {
+  @apply px-4 py-3;
   }
 }
 
