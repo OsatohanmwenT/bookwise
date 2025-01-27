@@ -3,11 +3,27 @@ import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";
 import UserTable from "@/components/admin/UserTable";
 import { db } from "@/database/drizzle";
-import { users } from "@/database/schema";
-import { desc } from "drizzle-orm";
+import { borrowRecords, users } from "@/database/schema";
+import { eq, sql } from "drizzle-orm";
 
 const Page = async () => {
-  const userList = await db.select().from(users);
+  const userList = await db
+    .select({
+      id: users.id,
+      fullName: users.fullName,
+      email: users.email,
+      role: users.role,
+      password: users.password,
+      status: users.status,
+      createdAt: users.createdAt,
+      lastActivityDate: users.lastActivityDate,
+      universityId: users.universityId,
+      universityCard: users.universityCard,
+      borrowedBookCount: sql<number>`COUNT(${borrowRecords.id})`,
+    })
+    .from(users)
+    .leftJoin(borrowRecords, eq(borrowRecords.userId, users.id))
+    .groupBy(users.id);
 
   return (
     <section className="w-full rounded-2xl bg-white p-7">

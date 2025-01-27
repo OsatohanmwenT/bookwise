@@ -35,3 +35,28 @@ export const changeUserRole = async (id: string, role: ROLE) => {
     };
   }
 };
+
+const deleteUser = async (id: string) => {
+  try {
+    const user = await db.select().from(users).where(eq(users.id, id)).limit(1);
+    if (!user)
+      return {
+        success: false,
+        error: "User not found",
+      };
+
+    await db.delete(users).where(eq(users.id, id));
+
+    revalidatePath("/admin/users");
+
+    return {
+      success: true,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      success: false,
+      error: "An error occurred while deleting user",
+    };
+  }
+};

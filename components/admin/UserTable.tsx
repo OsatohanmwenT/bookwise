@@ -44,7 +44,9 @@ const UserTable = ({ users }: { users: User[] }) => {
                   role={user.role as string}
                 />
               </TableCell>
-              <TableCell className="text-center">22</TableCell>
+              <TableCell className="text-center">
+                {user.borrowedBookCount}
+              </TableCell>
               <TableCell>{user.universityId}</TableCell>
               <TableCell>
                 <button className="view">
