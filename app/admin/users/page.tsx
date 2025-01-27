@@ -4,6 +4,7 @@ import { ArrowUpDown } from "lucide-react";
 import UserTable from "@/components/admin/UserTable";
 import { db } from "@/database/drizzle";
 import { users } from "@/database/schema";
+import { desc } from "drizzle-orm";
 
 const Page = async () => {
   const userList = await db.select().from(users);

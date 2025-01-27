@@ -41,6 +41,8 @@ interface BorrowBookParams {
   userId: string;
 }
 
+type ROLE = "ADMIN" | "USER";
+
 interface User {
   id: string;
   fullName: string;
@@ -49,6 +51,6 @@ interface User {
   universityId: number;
   universityCard: string;
   status: string | null;
-  role: string | null;
+  role: ROLE | null;
   createdAt: Date | null;
 }

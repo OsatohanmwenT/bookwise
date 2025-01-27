@@ -40,6 +40,27 @@
         @apply w-full min-h-14 rounded-xl font-bold text-base text-light-800 !important;
     }
 
+    /*Table*/
+    .table {
+        @apply container mx-auto rounded-md overflow-hidden;
+    }
+
+    .table-head th {
+        @apply text-dark-100 text-sm lg:text-base bg-light-300 font-light p-4;
+    }
+
+    .table-body td {
+        @apply px-4 py-3;
+    }
+
+    .table-body .role {
+        @apply rounded-3xl h-auto px-3 shadow-none font-semibold !py-1;
+    }
+
+    .table-body .view {
+        @apply rounded-md text-blue-400 flex items-center justify-center gap-1 font-semibold shadow-none !important;
+    }
+
     /* Book BookForm */
     .book-form_input {
         @apply min-h-14 border border-gray-100 bg-light-600 p-4 text-base font-semibold placeholder:font-normal placeholder:text-slate-500 !important;

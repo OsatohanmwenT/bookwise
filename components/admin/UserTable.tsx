@@ -8,8 +8,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import dayjs from "dayjs";
-import { Trash2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ExternalLink, Trash2 } from "lucide-react";
+import RoleButton from "@/components/admin/RoleButton";
 
 const UserTable = ({ users }: { users: User[] }) => {
   return (
@@ -17,19 +17,20 @@ const UserTable = ({ users }: { users: User[] }) => {
       <Table>
         <TableHeader className="table-head">
           <TableRow>
-            <TableHead className="w-[300px]">Name</TableHead>
+            <TableHead className="w-[250px]">Name</TableHead>
             <TableHead>Date Joined</TableHead>
             <TableHead>Role</TableHead>
             <TableHead>Books Borrowed</TableHead>
             <TableHead>University ID No</TableHead>
             <TableHead>University ID Card</TableHead>
+            <TableHead className="text-right">Action</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody className="table-body">
           {users.map((user) => (
-            <TableRow key={user.id}>
+            <TableRow className="border-b border-light-100" key={user.id}>
               <TableCell className="flex items-center gap-2">
-                <div className="flex items-center flex-col">
+                <div className="flex flex-col">
                   <p className="font-medium text-start">{user.fullName}</p>
                   <p className="text-xs text-light-100">{user.email}</p>
                 </div>
@@ -38,11 +39,18 @@ const UserTable = ({ users }: { users: User[] }) => {
                 {dayjs(user.createdAt).format("MMM DD, YYYY")}
               </TableCell>
               <TableCell>
-                <Button>{user.role}</Button>
+                <RoleButton
+                  userId={user.id as string}
+                  role={user.role as string}
+                />
               </TableCell>
+              <TableCell className="text-center">22</TableCell>
               <TableCell>{user.universityId}</TableCell>
               <TableCell>
-                <Button>View ID Card</Button>
+                <button className="view">
+                  <span>View ID Card</span>
+                  <ExternalLink className="size-5" />
+                </button>
               </TableCell>
               <TableCell className="text-right">
                 <button>
