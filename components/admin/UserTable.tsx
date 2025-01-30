@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/table";
 import dayjs from "dayjs";
 import { ExternalLink, Trash2 } from "lucide-react";
-import RoleButton from "@/components/admin/RoleButton";
+import ModeButton from "@/components/admin/ModeButton";
 
 const UserTable = ({ users }: { users: User[] }) => {
   return (
@@ -39,9 +39,10 @@ const UserTable = ({ users }: { users: User[] }) => {
                 {dayjs(user.createdAt).format("MMM DD, YYYY")}
               </TableCell>
               <TableCell>
-                <RoleButton
+                <ModeButton
                   userId={user.id as string}
-                  role={user.role as string}
+                  initialMode={user.role as string}
+                  type="ROLE"
                 />
               </TableCell>
               <TableCell className="text-center">

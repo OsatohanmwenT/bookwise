@@ -48,7 +48,7 @@ const BookTable = ({ books }: { books: Book[] }) => {
               <TableCell>
                 {dayjs(book.createdAt).format("MMM DD, YYYY")}
               </TableCell>
-              <TableCell className="text-right">
+              <TableCell className="mr-0">
                 <div className="flex gap-2">
                   <button>
                     <Edit3 className="size-5 text-blue-500" />

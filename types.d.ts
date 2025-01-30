@@ -55,3 +55,19 @@ interface User {
   createdAt: Date | null;
   borrowedBookCount: number;
 }
+
+type STATUS = "RETURNED" | "BORROWED" | "LATE RETURN";
+
+interface BorrowRecord {
+  id: string;
+  fullName: string | null;
+  bookId: string | null;
+  coverColor: string | null;
+  coverUrl: string | null;
+  title: string | null;
+  email: string | null;
+  borrowDate: Date | null;
+  returnDate: Date | null;
+  dueDate: Date | null;
+  status: STATUS | null;
+}

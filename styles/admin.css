@@ -53,8 +53,8 @@
         @apply px-4 py-3;
     }
 
-    .table-body .role {
-        @apply rounded-3xl h-auto px-3 shadow-none font-semibold !py-1;
+    .table-body .role-btn {
+        @apply rounded-3xl h-auto px-3 text-sm shadow-none font-semibold !py-1;
     }
 
     .table-body .view {

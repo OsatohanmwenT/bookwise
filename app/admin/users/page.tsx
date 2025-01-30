@@ -5,6 +5,7 @@ import UserTable from "@/components/admin/UserTable";
 import { db } from "@/database/drizzle";
 import { borrowRecords, users } from "@/database/schema";
 import { eq, sql } from "drizzle-orm";
+import InfoSection from "@/components/admin/InfoSection";
 
 const Page = async () => {
   const userList = await db
@@ -26,23 +27,20 @@ const Page = async () => {
     .groupBy(users.id);
 
   return (
-    <section className="w-full rounded-2xl bg-white p-7">
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <h2 className="text-xl font-semibold">All Users</h2>
-        <div className="flex gap-2">
-          <Button
-            className="flex items-center border rounded-md text-dark-700 justify-center gap-1"
-            variant="ghost"
-          >
-            <p>A - Z</p>
-            <ArrowUpDown />
-          </Button>
-        </div>
-      </div>
-      <div className="mt-7 w-full overflow-hidden">
-        <UserTable users={userList} />
-      </div>
-    </section>
+    <InfoSection
+      title="All Users"
+      sortButton={
+        <Button
+          className="flex items-center border rounded-md text-dark-700 justify-center gap-1"
+          variant="ghost"
+        >
+          <p>A - Z</p>
+          <ArrowUpDown />
+        </Button>
+      }
+    >
+      <UserTable users={userList} />
+    </InfoSection>
   );
 };
 export default Page;
