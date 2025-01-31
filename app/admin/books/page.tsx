@@ -8,7 +8,7 @@ import { ArrowUpDown } from "lucide-react";
 import InfoSection from "@/components/admin/InfoSection";
 
 const Page = async () => {
-  const booklist = await db.select().from(books).limit(12);
+  const booklist = await db.select().from(books);
 
   return (
     <InfoSection

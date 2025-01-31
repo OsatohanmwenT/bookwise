@@ -36,7 +36,7 @@ export const changeUserRole = async (id: string, role: ROLE) => {
   }
 };
 
-const deleteUser = async (id: string) => {
+export const deleteUser = async (id: string) => {
   try {
     const user = await db.select().from(users).where(eq(users.id, id)).limit(1);
     if (!user)

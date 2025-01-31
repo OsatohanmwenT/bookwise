@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import {
   Table,
   TableBody,
@@ -10,8 +12,40 @@ import {
 import dayjs from "dayjs";
 import { ExternalLink, Trash2 } from "lucide-react";
 import ModeButton from "@/components/admin/ModeButton";
+import StatusDialog from "@/components/admin/StatusDialog";
+import { deleteUser } from "@/lib/admin/actions/user";
+import { toast } from "@/hooks/use-toast";
 
 const UserTable = ({ users }: { users: User[] }) => {
+  const [showDeny, setShowDeny] = useState(false);
+
+  const handleDeleteUser = async (id: string) => {
+    try {
+      const result = await deleteUser(id);
+
+      if (result.success) {
+        toast({
+          title: "Success",
+          description: "User role changed successfully",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: result.error,
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: "Error",
+        description: "An error occurred.",
+        variant: "destructive",
+      });
+    } finally {
+      setShowDeny(false);
+    }
+  };
   return (
     <div className="table">
       <Table>
@@ -56,9 +90,20 @@ const UserTable = ({ users }: { users: User[] }) => {
                 </button>
               </TableCell>
               <TableCell className="text-right">
-                <button>
-                  <Trash2 className="size-5 text-red" />
-                </button>
+                <StatusDialog
+                  type="error"
+                  title="Delete Account"
+                  description="This action cannot be undone. This will permanently delete your account and remove your data from our servers."
+                  buttonText="Delete user account"
+                  onAction={() => handleDeleteUser(user.id)}
+                  trigger={
+                    <button>
+                      <Trash2 className="text-red-600 size-5" />
+                    </button>
+                  }
+                  open={showDeny}
+                  onOpenChange={setShowDeny}
+                />
               </TableCell>
             </TableRow>
           ))}

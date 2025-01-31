@@ -23,7 +23,7 @@ const BorrowRecordsTable = ({
     <Table>
       <TableHeader className="table-head">
         <TableRow>
-          <TableHead className="w-[200px]">Book</TableHead>
+          <TableHead className="max-xl:w-[200px]">Book</TableHead>
           <TableHead>User requested</TableHead>
           <TableHead>Borrowed status</TableHead>
           <TableHead>Borrowed date</TableHead>

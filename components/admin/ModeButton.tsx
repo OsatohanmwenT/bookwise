@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { changeUserRole } from "@/lib/admin/actions/user";
 import { toast } from "@/hooks/use-toast";
+import { changeBookStatus } from "@/lib/admin/actions/book";
 
 interface Mode {
   id: string;
@@ -90,11 +91,32 @@ const ModeButton = ({
             variant: "destructive",
           });
         }
-      } else {
-        console.log(newMode);
+      } else if (type === "STATUS") {
+        const result = await changeBookStatus(userId, newMode as STATUS);
+
+        console.log(result);
+        if (result?.success) {
+          toast({
+            title: "Success",
+            description: "User role changed successfully",
+          });
+
+          setSelectedMode(result?.data.status);
+        } else {
+          toast({
+            title: "Error",
+            description: result?.error,
+            variant: "destructive",
+          });
+        }
       }
     } catch (error) {
       console.log(error);
+      toast({
+        title: "Error",
+        description: "An error occurred.",
+        variant: "destructive",
+      });
     }
   };
 

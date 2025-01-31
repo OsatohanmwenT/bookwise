@@ -13,8 +13,41 @@ import { Edit3, Trash2 } from "lucide-react";
 import dayjs from "dayjs";
 import BookCover from "@/components/BookCover";
 import Link from "next/link";
+import StatusDialog from "@/components/admin/StatusDialog";
+import { toast } from "@/hooks/use-toast";
+import { deleteBook } from "@/lib/admin/actions/book";
 
 const BookTable = ({ books }: { books: Book[] }) => {
+  const [showDelete, setShowDelete] = React.useState(false);
+
+  const handleDeleteBook = async (id: string) => {
+    try {
+      const result = await deleteBook(id);
+
+      if (result.success) {
+        toast({
+          title: "Success",
+          description: "User role changed successfully",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: result.error,
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: "Error",
+        description: "An error occurred.",
+        variant: "destructive",
+      });
+    } finally {
+      setShowDelete(false);
+    }
+  };
+
   return (
     <div className="table">
       <Table>
@@ -53,9 +86,18 @@ const BookTable = ({ books }: { books: Book[] }) => {
                   <button>
                     <Edit3 className="size-5 text-blue-500" />
                   </button>
-                  <button>
-                    <Trash2 className="size-5 text-red" />
-                  </button>
+                  <StatusDialog
+                    type="error"
+                    title="Delete Book"
+                    description="This action cannot be undone. This will permanently delete your book and remove your data from our servers."
+                    buttonText="Delete Book"
+                    onAction={() => handleDeleteBook(book.id)}
+                    trigger={
+                      <button>
+                        <Trash2 className="size-5 text-red" />
+                      </button>
+                    }
+                  />
                 </div>
               </TableCell>
             </TableRow>
