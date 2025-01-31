@@ -46,7 +46,7 @@
     }
 
     .table-head th {
-        @apply text-dark-100 text-sm lg:text-base bg-light-300 font-light p-4;
+        @apply text-dark-600 !font-semibold text-sm lg:text-base bg-light-300 p-4;
     }
 
     .table-body td {

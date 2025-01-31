@@ -53,7 +53,7 @@ interface User {
   status: string | null;
   role: ROLE | null;
   createdAt: Date | null;
-  borrowedBookCount: number;
+  borrowedBookCount?: number;
 }
 
 type STATUS = "RETURNED" | "BORROWED" | "LATE RETURN";

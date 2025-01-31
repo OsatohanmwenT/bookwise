@@ -18,8 +18,6 @@ import { toast } from "@/hooks/use-toast";
 import { deleteBook } from "@/lib/admin/actions/book";
 
 const BookTable = ({ books }: { books: Book[] }) => {
-  const [showDelete, setShowDelete] = React.useState(false);
-
   const handleDeleteBook = async (id: string) => {
     try {
       const result = await deleteBook(id);
@@ -43,8 +41,6 @@ const BookTable = ({ books }: { books: Book[] }) => {
         description: "An error occurred.",
         variant: "destructive",
       });
-    } finally {
-      setShowDelete(false);
     }
   };
 
@@ -81,8 +77,8 @@ const BookTable = ({ books }: { books: Book[] }) => {
               <TableCell>
                 {dayjs(book.createdAt).format("MMM DD, YYYY")}
               </TableCell>
-              <TableCell className="mr-0">
-                <div className="flex gap-2">
+              <TableCell>
+                <div className="flex justify-end gap-2">
                   <button>
                     <Edit3 className="size-5 text-blue-500" />
                   </button>

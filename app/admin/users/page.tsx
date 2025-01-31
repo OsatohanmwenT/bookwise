@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";
-import UserTable from "@/components/admin/UserTable";
+import UserTable from "@/components/admin/table/UserTable";
 import { db } from "@/database/drizzle";
 import { borrowRecords, users } from "@/database/schema";
 import { eq, sql } from "drizzle-orm";

@@ -15,6 +15,7 @@ import ModeButton from "@/components/admin/ModeButton";
 import StatusDialog from "@/components/admin/StatusDialog";
 import { deleteUser } from "@/lib/admin/actions/user";
 import { toast } from "@/hooks/use-toast";
+import ViewImage from "@/components/admin/ViewImage";
 
 const UserTable = ({ users }: { users: User[] }) => {
   const [showDeny, setShowDeny] = useState(false);
@@ -61,6 +62,17 @@ const UserTable = ({ users }: { users: User[] }) => {
           </TableRow>
         </TableHeader>
         <TableBody className="table-body">
+          {!users.length && (
+            <TableRow>
+              <TableCell colSpan={7}>
+                <div className="rounded-lg py-10 bg-gray-100 border-gray-400-400 border flex items-center justify-center">
+                  <p className="text-gray-700 text-lg">
+                    No Users Request Found
+                  </p>
+                </div>
+              </TableCell>
+            </TableRow>
+          )}
           {users.map((user) => (
             <TableRow className="border-b border-light-100" key={user.id}>
               <TableCell className="flex items-center gap-2">
@@ -84,10 +96,7 @@ const UserTable = ({ users }: { users: User[] }) => {
               </TableCell>
               <TableCell>{user.universityId}</TableCell>
               <TableCell>
-                <button className="view">
-                  <span>View ID Card</span>
-                  <ExternalLink className="size-5" />
-                </button>
+                <ViewImage path={user.universityCard} />
               </TableCell>
               <TableCell className="text-right">
                 <StatusDialog

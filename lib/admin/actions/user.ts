@@ -60,3 +60,47 @@ export const deleteUser = async (id: string) => {
     };
   }
 };
+
+export const denyUser = async (id: string) => {
+  try {
+    const user = await db.select().from(users).where(eq(users.id, id)).limit(1);
+
+    if (!user) return null;
+
+    await db.update(users).set({ status: "REJECTED" });
+
+    revalidatePath("/admin/account-requests");
+
+    return {
+      success: true,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      success: false,
+      error: "An error occurred while denying user access",
+    };
+  }
+};
+
+export const approveUser = async (id: string) => {
+  try {
+    const user = await db.select().from(users).where(eq(users.id, id)).limit(1);
+
+    if (!user) return null;
+
+    await db.update(users).set({ status: "APPROVED" });
+
+    revalidatePath("/admin/account-requests");
+
+    return {
+      success: true,
+    };
+  } catch (error) {
+    console.error(error);
+    return {
+      success: false,
+      error: "An error occurred while approving user access",
+    };
+  }
+};

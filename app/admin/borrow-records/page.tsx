@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowUpDown } from "lucide-react";
 import InfoSection from "@/components/admin/InfoSection";
-import BorrowRecordsTable from "@/components/admin/BorrowRecordsTable";
+import BorrowRecordsTable from "@/components/admin/table/BorrowRecordsTable";
 import { db } from "@/database/drizzle";
 import { books, borrowRecords, users } from "@/database/schema";
 import { eq } from "drizzle-orm";

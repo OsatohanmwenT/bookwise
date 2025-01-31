@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import BookTable from "@/components/admin/BookTable";
+import BookTable from "@/components/admin/table/BookTable";
 import { db } from "@/database/drizzle";
 import { books } from "@/database/schema";
 import { ArrowUpDown } from "lucide-react";
