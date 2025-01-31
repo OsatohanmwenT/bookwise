@@ -67,7 +67,7 @@ interface BorrowRecord {
   title: string | null;
   email: string | null;
   borrowDate: Date | null;
-  returnDate: Date | null;
-  dueDate: Date | null;
+  returnDate: string | null;
+  dueDate: string | null;
   status: STATUS | null;
 }
