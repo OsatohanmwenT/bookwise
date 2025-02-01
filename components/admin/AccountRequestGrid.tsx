@@ -16,7 +16,7 @@ const AccountRequestGrid = async () => {
     return (
       <div className="flex py-5 items-center flex-col gap-2 justify-center">
         <Image
-          src="/icons/no-account-illustration.svg"
+          src="/icons/illustration2.svg"
           alt="no accounts"
           height={100}
           width={200}

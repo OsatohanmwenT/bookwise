@@ -26,7 +26,7 @@ const BorrowList = async () => {
     return (
       <div className="flex items-center py-5 flex-col gap-2 justify-center">
         <Image
-          src="/icons/no-borrow-illustration.svg"
+          src="/icons/illustration1.svg"
           alt="no accounts"
           height={100}
           width={200}
