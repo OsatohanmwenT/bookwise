@@ -64,11 +64,11 @@
 
   /* Book Cover */
   .book-cover_extra_small {
-    @apply w-[30px] h-10;
+    @apply w-[35px] h-12;
   }
 
   .book-cover_small {
-    @apply w-[35px] h-12;
+    @apply w-[55px] h-[76px];
   }
 
   .book-cover_medium {

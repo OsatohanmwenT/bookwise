@@ -1,36 +1,29 @@
 import React from "react";
-import { auth, signOut } from "@/auth";
-import { Button } from "@/components/ui/button";
+import { auth } from "@/auth";
 import BookList from "@/components/BookList";
 import { db } from "@/database/drizzle";
-import { borrowRecords } from "@/database/schema";
-import { and, eq } from "drizzle-orm";
+import { books, borrowRecords } from "@/database/schema";
+import { eq } from "drizzle-orm";
 
 const Page = async () => {
   const session = await auth();
 
   const borrowedBooks = await db
-    .select()
+    .select({
+      id: borrowRecords.id,
+      bookId: borrowRecords.bookId,
+      coverUrl: books.coverUrl,
+      coverColor: books.coverColor,
+      title: books.title,
+      author: books.author,
+      genre: books.genre,
+    })
     .from(borrowRecords)
-    .where(
-      and(
-        eq(borrowRecords.userId, session?.user?.id),
-        eq(borrowRecords.status, "BORROWED"),
-      ),
-    )
-    .limit(1);
+    .leftJoin(books, eq(borrowRecords.bookId, books.id))
+    .where(eq(borrowRecords.userId, session?.user?.id as string));
 
   return (
     <>
-      <form
-        action={async () => {
-          "use server";
-          await signOut();
-        }}
-        className="mb-20"
-      >
-        <Button>Logout</Button>
-      </form>
       <BookList books={borrowedBooks} title="Borrowed Books" />
     </>
   );

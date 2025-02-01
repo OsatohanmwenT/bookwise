@@ -65,7 +65,7 @@ const BookTable = ({ books }: { books: Book[] }) => {
                   href={`/admin/books/${book.id}`}
                 >
                   <BookCover
-                    variant="small"
+                    variant="extraSmall"
                     coverColor={book.coverColor}
                     coverImage={book.coverUrl}
                   />

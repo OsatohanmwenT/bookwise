@@ -13,3 +13,30 @@ export const getInitials = (name: string) => {
     .toUpperCase()
     .slice(0, 2);
 };
+
+export const dateRange = () => {
+  const today = new Date();
+
+  const currentWeekStart = new Date(today);
+  currentWeekStart.setDate(today.getDate() - today.getDay());
+  currentWeekStart.setHours(0, 0, 0, 0);
+
+  const lastWeekStart = new Date(currentWeekStart);
+  lastWeekStart.setDate(currentWeekStart.getDate() - 7);
+
+  const lastWeekEnd = new Date(currentWeekStart);
+  lastWeekEnd.setDate(currentWeekStart.getDate() - 1);
+  lastWeekEnd.setHours(23, 59, 59, 999);
+
+  return { today, currentWeekStart, lastWeekEnd, lastWeekStart };
+};
+
+export function generateBgColor(index: number): string {
+  const hue = (index * 137.508) % 360;
+  return `hsl(${hue}, 70%, 85%)`; // Lighter background
+}
+
+export function generateTextColor(index: number): string {
+  const hue = (index * 137.508) % 360;
+  return `hsl(${hue}, 70%, 40%)`; // Darker text for contrast
+}

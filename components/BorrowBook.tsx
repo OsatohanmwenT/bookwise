@@ -14,9 +14,11 @@ interface Props {
     isEligible: boolean;
     message: string;
   };
+  isBorrowed: boolean;
 }
 
 const BorrowBook = ({
+  isBorrowed,
   bookId,
   userId,
   borrowingEligibility: { isEligible, message },
@@ -65,12 +67,16 @@ const BorrowBook = ({
   return (
     <Button
       onClick={handleBorrowBook}
-      disabled={borrowing}
+      disabled={borrowing || isBorrowed}
       className="book-overview_btn"
     >
       <Image src="/icons/book.svg" alt="book" width={20} height={20} />
       <p className="font-bebas-neue text-xl text-dark-100">
-        {borrowing ? "Borrowing..." : "BORROW BOOK"}
+        {borrowing
+          ? "Borrowing..."
+          : isBorrowed
+            ? "You have this already"
+            : "BORROW BOOK"}
       </p>
     </Button>
   );

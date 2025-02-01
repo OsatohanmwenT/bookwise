@@ -1,5 +1,6 @@
 import React from "react";
 import { Session } from "next-auth";
+import SearchForm from "@/components/admin/SearchForm";
 
 const Header = ({ session }: { session: Session }) => {
   return (
@@ -12,8 +13,7 @@ const Header = ({ session }: { session: Session }) => {
           Monitor all of your users and books
         </p>
       </div>
-
-      <p>Search</p>
+      <SearchForm />
     </header>
   );
 };

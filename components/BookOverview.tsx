@@ -3,8 +3,8 @@ import Image from "next/image";
 import BookCover from "@/components/BookCover";
 import BorrowBook from "@/components/BorrowBook";
 import { db } from "@/database/drizzle";
-import { users } from "@/database/schema";
-import { eq } from "drizzle-orm";
+import { borrowRecords, users } from "@/database/schema";
+import { eq, sql } from "drizzle-orm";
 
 interface Props extends Book {
   userId: string;
@@ -24,8 +24,13 @@ const BookOverview = async ({
   userId,
 }: Props) => {
   const [user] = await db
-    .select()
+    .select({
+      id: users.id,
+      status: users.status,
+      isBorrowed: sql`CASE WHEN ${borrowRecords.bookId} = ${id} THEN TRUE ELSE FALSE END`,
+    })
     .from(users)
+    .leftJoin(borrowRecords, eq(borrowRecords.bookId, id))
     .where(eq(users.id, userId))
     .limit(1);
 
@@ -67,6 +72,7 @@ const BookOverview = async ({
         <p className="book-description">{description}</p>
         {borrowingEligibility.isEligible && (
           <BorrowBook
+            isBorrowed={user?.isBorrowed as boolean}
             bookId={id}
             userId={userId}
             borrowingEligibility={borrowingEligibility}

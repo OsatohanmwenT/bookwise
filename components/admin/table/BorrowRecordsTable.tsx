@@ -42,7 +42,7 @@ const BorrowRecordsTable = ({
                     href={`/admin/books/${borrowRecord.bookId}`}
                   >
                     <BookCover
-                      variant="small"
+                      variant="extraSmall"
                       coverColor={borrowRecord.coverColor as string}
                       coverImage={borrowRecord.coverUrl as string}
                     />

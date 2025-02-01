@@ -71,3 +71,15 @@ interface BorrowRecord {
   dueDate: string | null;
   status: STATUS | null;
 }
+
+interface BorrowListItem {
+  id: string;
+  fullName: string | null;
+  bookId: string | null;
+  coverColor: string | null;
+  coverUrl: string | null;
+  title: string | null;
+  author: string | null;
+  genre: string | null;
+  borrowDate: Date | null;
+}
