@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/database/drizzle";
-import { books, borrowRecords, users } from "@/database/schema";
+import { books, borrowRecords } from "@/database/schema";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
@@ -81,6 +81,35 @@ export const deleteBook = async (id: string) => {
     return {
       success: false,
       error: "An error occurred while deleting user",
+    };
+  }
+};
+
+export const updateBook = async (
+  id: string | undefined,
+  params: BookParams,
+) => {
+  if (!id || !params) return null;
+  try {
+    const updatedBook = await db
+      .update(books)
+      .set({
+        ...params,
+        availableCopies: params.totalCopies,
+      })
+      .where(eq(books.id, id))
+      .returning();
+
+    return {
+      success: true,
+      data: JSON.parse(JSON.stringify(updatedBook[0])),
+    };
+  } catch (error) {
+    console.log(error);
+
+    return {
+      success: false,
+      message: "An error occurred while creating book",
     };
   }
 };

@@ -61,15 +61,20 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
               By {bookDetail.author}
             </p>
             <p className="text-dark-700">{bookDetail.genre}</p>
-            <Button className="bg-primary-admin h-auto max-w-md py-3 text-white">
-              <Image
-                src="/icons/admin/edit.svg"
-                alt="edit icon"
-                width={20}
-                height={20}
-                className="brightness-0 invert"
-              />
-              <p className="text-white">Edit Book</p>
+            <Button
+              asChild
+              className="bg-primary-admin h-auto max-w-md py-3 text-white"
+            >
+              <Link href={`/admin/books/edit/${bookDetail.id}`}>
+                <Image
+                  src="/icons/admin/edit.svg"
+                  alt="edit icon"
+                  width={20}
+                  height={20}
+                  className="brightness-0 invert"
+                />
+                <p className="text-white">Edit Book</p>
+              </Link>
             </Button>
           </div>
         </div>
