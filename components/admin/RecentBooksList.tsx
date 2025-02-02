@@ -14,8 +14,6 @@ const RecentBooksList = async () => {
     .limit(10)
     .orderBy(desc(books.createdAt));
 
-  console.log(recentBooks);
-
   return (
     <div className="flex gap-5 flex-col">
       <Link

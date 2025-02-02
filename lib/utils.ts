@@ -40,3 +40,11 @@ export function generateTextColor(index: number): string {
   const hue = (index * 137.508) % 360;
   return `hsl(${hue}, 70%, 40%)`; // Darker text for contrast
 }
+
+export const hexToRgb = (hex: string) => {
+  hex = hex.replace(/^#/, "");
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+  return `${r}, ${g}, ${b}`;
+};
