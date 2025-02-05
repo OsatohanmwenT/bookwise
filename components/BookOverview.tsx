@@ -33,7 +33,6 @@ const BookOverview = async ({
     .leftJoin(borrowRecords, eq(borrowRecords.userId, userId))
     .where(eq(users.id, userId))
     .limit(1);
-  jjkknn;
   const borrowingEligibility = {
     isEligible: availableCopies > 0 && user.status === "APPROVED",
     message:
