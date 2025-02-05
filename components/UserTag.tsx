@@ -20,7 +20,7 @@ const UserTag = async () => {
     .where(eq(users.id, session?.user?.id));
 
   return (
-    <div className="p-6 pt-14 relative w-[700px] bg-gradient-to-b from-[#232839] to-[#12141D] h-fit rounded-xl">
+    <div className="p-6 pt-14 relative w-[450px] xl:w-[700px] bg-gradient-to-b from-[#232839] to-[#12141D] h-fit rounded-xl">
       <Image
         src="/icons/hook.svg"
         alt="hook"
