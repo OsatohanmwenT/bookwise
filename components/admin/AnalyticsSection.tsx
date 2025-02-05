@@ -5,7 +5,7 @@ import BookStat from "@/components/admin/BookStat";
 
 const AnalyticsSection = async () => {
   return (
-    <div className="grid grid-cols-3 w-full gap-5">
+    <div className="grid xl:grid-cols-3 w-full gap-5">
       <BorrowStat />
       <UserStat />
       <BookStat />

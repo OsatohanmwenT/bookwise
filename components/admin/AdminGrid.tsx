@@ -6,7 +6,7 @@ import RecentBooksList from "@/components/admin/RecentBooksList";
 
 const AdminGrid = () => {
   return (
-    <section className="grid grid-cols-2 gap-5 mt-5">
+    <section className="grid xl:grid-cols-2 gap-5 mt-5">
       <div className="flex gap-5 flex-col">
         <AdminGridCard title="Borrow Requests" link="/admin/borrow-records">
           <BorrowList />
