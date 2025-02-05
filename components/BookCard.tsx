@@ -12,14 +12,17 @@ const BookCard = ({
   genre,
   coverUrl,
   isLoanedBook = false,
-}: Book) => {
+}: Partial<Book>) => {
   return (
     <li className={cn(isLoanedBook && "xs:w-52 w-full")}>
       <Link
         className={cn(isLoanedBook && "w-full flex flex-col items-center")}
         href={`/books/${id}`}
       >
-        <BookCover coverColor={coverColor} coverImage={coverUrl} />
+        <BookCover
+          coverColor={coverColor as string}
+          coverImage={coverUrl as string}
+        />
         <div className={cn("mt-4", !isLoanedBook && "xs:max-w-40 max-w-28")}>
           <p className="book-title">{title}</p>
           <p className="book-genre">{genre}</p>

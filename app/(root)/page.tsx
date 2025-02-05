@@ -22,6 +22,7 @@ export default async function Home() {
         title="Latest Books"
         books={latestBooks.slice(1)}
         containerClass="mt-20"
+        type="BOOK LIST"
       />
     </>
   );

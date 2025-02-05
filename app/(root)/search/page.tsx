@@ -49,6 +49,7 @@ const Page = async ({
                   ? `Search Result for ${searchQuery}`
                   : "Search Results"
               }
+              type="BOOK LIST"
             />
             <Separator className="bg-dark-400 my-10" />
           </>

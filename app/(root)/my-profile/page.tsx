@@ -4,9 +4,13 @@ import BookList from "@/components/BookList";
 import { db } from "@/database/drizzle";
 import { books, borrowRecords } from "@/database/schema";
 import { eq } from "drizzle-orm";
+import UserTag from "@/components/UserTag";
+import { redirect } from "next/navigation";
 
 const Page = async () => {
   const session = await auth();
+
+  if (!session?.user?.id) return redirect("/sign-in");
 
   const borrowedBooks = await db
     .select({
@@ -17,14 +21,23 @@ const Page = async () => {
       title: books.title,
       author: books.author,
       genre: books.genre,
+      rating: books.rating,
+      createdAt: books.createdAt,
     })
     .from(borrowRecords)
     .leftJoin(books, eq(borrowRecords.bookId, books.id))
-    .where(eq(borrowRecords.userId, session?.user?.id as string));
+    .where(eq(borrowRecords.userId, session?.user?.id));
 
   return (
     <>
-      <BookList books={borrowedBooks} title="Borrowed Books" />
+      <div className="flex gap-20">
+        <UserTag />
+        <BookList
+          books={borrowedBooks}
+          type="BORROW LIST"
+          title="Borrowed Books"
+        />
+      </div>
     </>
   );
 };

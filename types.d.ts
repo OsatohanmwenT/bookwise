@@ -60,26 +60,30 @@ type STATUS = "RETURNED" | "BORROWED" | "LATE RETURN";
 
 interface BorrowRecord {
   id: string;
-  fullName: string | null;
-  bookId: string | null;
-  coverColor: string | null;
-  coverUrl: string | null;
-  title: string | null;
-  email: string | null;
+  fullName: string;
+  bookId: string;
+  coverColor: string;
+  coverUrl: string;
+  title: string;
+  email: string;
   borrowDate: Date | null;
   returnDate: string | null;
-  dueDate: string | null;
+  dueDate: string;
   status: STATUS | null;
 }
 
 interface BorrowListItem {
   id: string;
   fullName: string | null;
-  bookId: string | null;
-  coverColor: string | null;
-  coverUrl: string | null;
+  bookId: string;
+  coverColor: string;
+  coverUrl: string;
   title: string | null;
   author: string | null;
   genre: string | null;
   borrowDate: Date | null;
+}
+
+interface BorrowProfileList extends BorrowListItem {
+  dueDate: Date;
 }

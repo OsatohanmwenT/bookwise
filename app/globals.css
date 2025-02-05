@@ -88,6 +88,10 @@
     @apply mt-10 flex flex-wrap gap-12 max-xs:justify-center xs:gap-10;
   }
 
+  .borrow-list {
+    @apply mt-10 grid grid-cols-3 gap-12 max-xs:justify-center xs:gap-10;
+  }
+
   /* Book Overview */
   .book-overview {
     @apply flex flex-col-reverse items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8;
