@@ -30,7 +30,7 @@ const Page = async () => {
 
   return (
     <>
-      <div className="flex gap-10 xl:gap-20">
+      <div className="flex gap-5 xl:gap-20">
         <UserTag />
         <BookList
           books={borrowedBooks}
