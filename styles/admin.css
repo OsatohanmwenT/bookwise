@@ -203,7 +203,7 @@
     }
 
     .admin-sidebar .link p {
-        @apply text-base font-medium max-md:hidden;
+        @apply text-base font-medium max-xl:hidden;
     }
 
     .admin-sidebar .user {
