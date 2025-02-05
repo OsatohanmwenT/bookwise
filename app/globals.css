@@ -89,7 +89,7 @@
   }
 
   .borrow-list {
-    @apply mt-10 grid grid-cols-3 gap-12 max-xs:justify-center xs:gap-10;
+    @apply mt-10 grid xl:grid-cols-3 gap-12 max-xs:justify-center xs:gap-10;
   }
 
   /* Book Overview */

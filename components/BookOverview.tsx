@@ -30,7 +30,7 @@ const BookOverview = async ({
       isBorrowed: sql`CASE WHEN ${borrowRecords.bookId} = ${id} THEN TRUE ELSE FALSE END`,
     })
     .from(users)
-    .leftJoin(borrowRecords, eq(borrowRecords.bookId, id))
+    .leftJoin(borrowRecords, eq(borrowRecords.userId, userId))
     .where(eq(users.id, userId))
     .limit(1);
 
