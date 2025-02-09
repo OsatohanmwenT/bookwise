@@ -1,3 +1,4 @@
+CREATE TYPE "public"."borrow_status" AS ENUM('BORROWED', 'RETURNED', 'LATE RETURN');--> statement-breakpoint
 CREATE TABLE "borrow_records" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"user_id" uuid NOT NULL,

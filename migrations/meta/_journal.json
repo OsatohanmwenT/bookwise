@@ -5,29 +5,15 @@
     {
       "idx": 0,
       "version": "7",
-      "when": 1737305826799,
-      "tag": "0000_dear_warlock",
+      "when": 1739047545640,
+      "tag": "0000_real_skrulls",
       "breakpoints": true
     },
     {
       "idx": 1,
       "version": "7",
-      "when": 1737661271937,
-      "tag": "0001_ancient_william_stryker",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "7",
-      "when": 1737721475024,
-      "tag": "0002_mute_norman_osborn",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "7",
-      "when": 1738273496942,
-      "tag": "0003_furry_plazm",
+      "when": 1739047597239,
+      "tag": "0001_puzzling_gamma_corps",
       "breakpoints": true
     }
   ]

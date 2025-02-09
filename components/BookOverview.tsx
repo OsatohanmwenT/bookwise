@@ -4,7 +4,7 @@ import BookCover from "@/components/BookCover";
 import BorrowBook from "@/components/BorrowBook";
 import { db } from "@/database/drizzle";
 import { borrowRecords, users } from "@/database/schema";
-import { eq, sql } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 
 interface Props extends Book {
   userId: string;
@@ -28,11 +28,16 @@ const BookOverview = async ({
       id: users.id,
       status: users.status,
       isBorrowed: sql`CASE WHEN ${borrowRecords.bookId} = ${id} THEN TRUE ELSE FALSE END`,
+      bookId: borrowRecords.bookId,
     })
     .from(users)
-    .leftJoin(borrowRecords, eq(borrowRecords.userId, userId))
+    .leftJoin(
+      borrowRecords,
+      and(eq(borrowRecords.userId, userId), eq(borrowRecords.bookId, id)),
+    )
     .where(eq(users.id, userId))
     .limit(1);
+
   const borrowingEligibility = {
     isEligible: availableCopies > 0 && user.status === "APPROVED",
     message:

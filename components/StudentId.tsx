@@ -11,6 +11,7 @@ const StudentId = ({ universityCard }: { universityCard: string }) => {
       path={universityCard}
       urlEndpoint={config.env.imagekit.urlEndpoint}
       alt="student id card"
+      loading="lazy"
     />
   );
 };

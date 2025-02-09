@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import dayjs from "dayjs";
-import { ExternalLink, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import ModeButton from "@/components/admin/ModeButton";
 import StatusDialog from "@/components/admin/StatusDialog";
 import { deleteUser } from "@/lib/admin/actions/user";
